@@ -23,13 +23,13 @@ export const login = async (req, res) => {
 
         // Generate JWT
          const token = generateToken(user._id, res);
-         const res = res.status(200).json({
+         console.log(token);
+         return res.status(200).json({
             _id: user._id,
             email: user.email,
             token
           });
-          console.log(res)
-          return res;
+          
 
     } catch (error) {
         res.status(500).json({ message: "Server error", error: error.message });
