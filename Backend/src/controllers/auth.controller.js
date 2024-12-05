@@ -3,14 +3,15 @@ import User from "../models/user.model.js";
 import { generateToken } from "../libs/utils.js";
 export const login = async (req, res) => {
     const { email, password } = req.body;
-   
+      console.log(email)
+      console.log(password)
     if (!email || !password) {
         return res.status(400).json({ message: "Email and password are required." });
     }
 
     try {
         const user = await User.findOne({ email });
-
+          console.log(user)
         if (!user) {
             return res.status(404).json({ message: "User not found." });
         }
@@ -22,11 +23,13 @@ export const login = async (req, res) => {
 
         // Generate JWT
          const token = generateToken(user._id, res);
-          res.status(200).json({
+         const res = res.status(200).json({
             _id: user._id,
             email: user.email,
             token
           });
+          console.log(res)
+          return res;
 
     } catch (error) {
         res.status(500).json({ message: "Server error", error: error.message });

@@ -26,7 +26,7 @@ app.use(
 
 app.use(
     cors({
-        origin:'https://gfxportfolio-mern.onrender.com/',
+        origin:'http://localhost:5173',
         credentials:true
     })
 )
