@@ -20,9 +20,9 @@ export const login = async (req, res) => {
         if (user.password !== password) {
             return res.status(401).json({ message: "Invalid credentials." });
         }
-
+        console.log(user._id);
         // Generate JWT
-         const token = generateToken(user._id, res);
+         const token =  generateToken(user._id, res);
          console.log(token);
          return res.status(200).json({
             _id: user._id,
